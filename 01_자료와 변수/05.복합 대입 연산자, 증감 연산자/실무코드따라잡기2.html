@@ -9,14 +9,15 @@
       <script>
          //로그인 할때 로그인 시도 횟수를 logincount 변수에 저장하세요
 
-         const login = true //로그인 시도 여부
-         let loginCount = 0 //로그인 시도 횟수 저장
+         var login = true //로그인 시도 여부
+         var loginCount = 0 //로그인 시도 횟수 저장
 
          //로그인을 시도했을떄
-         lf (login) {
+         if (login) {
             //loginCount = loginCount + 1 //첫번쨰 방법
             loginCount++ //두번쨰 방법
          }
+         document.write(`로그인 시도 횟수: ${loginCount}회`)
       </script>
    </body>
 </html>
