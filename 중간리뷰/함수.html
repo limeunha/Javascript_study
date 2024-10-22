@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <script>
+         // 매개변수 a,b 받아서 더해서 리턴하는 함수
+         // 3가지방법 정의
+
+         //이름있는 함수
+         //  function add(a, b) {
+         //     return a + b
+         //  }
+
+         //  //이름없는 함수
+         //  const add = function (a, b) {
+         //     return a + b
+         //  }
+
+         //  const add = () => a + b
+
+         //  const test = () => console.log('test')
+         //  const objF = () => ({
+         //     test: 'hi',
+         //  }) //json 객체
+
+         // 콜백함수
+         //  function printNumber(num, callback) {
+         //     console.log('printNumber() 함수의 num:', num)
+         //     callback(num) //5
+         //  }
+
+         //  const test = (num) => {
+         //     console.log('num * num:', num * num)
+         //  }
+
+         //  printNumber(5, test)
+         //  printNumber(5, test)
+
+         //  printNumber(5, function (num) {
+         //     console.log('num * num:', num * num)
+         //  })
+         //  printNumber(5, (num) => {
+         //     console.log('num * num:', num * num)
+         //  })
+
+         const array1 = ['a', 'b', 'c']
+
+         //배열과 인덱스번호 같이 가져옴
+         array1.forEach((value, idx) => {
+            console.log(value, idx)
+         })
+
+         const words = ['옷장', '컴퓨터', '식기세척기', '텔레비젼']
+
+         //식기세척기, 텔레비젼
+         const result = words
+            .filter((word, idx, arr) => {
+               // 리턴문이 true일때 해당 데이터를 resultd에 저장
+               return word.length >= 4
+            })
+            .forEach((word) => {
+               console.log(word)
+            })
+         console.log(result)
+
+         const array2 = [1, 4, 9, 16]
+
+         const result2 = array2.map((value) => value * 2)
+         console.log(result2)
+      </script>
+   </body>
+</html>

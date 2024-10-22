@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+   </head>
+   <body>
+      <script>
+         //다 false
+         var test //undefined
+         var num1 = null
+         var str = ''
+         var num2 = 0
+
+         if (!test) {
+            console.log('false입니다.')
+         }
+
+         // const, let, var
+
+         //자유롭고 변수값을 덮어쓰기
+         var value1 = 0
+         var value1 = 1
+         value1 = 2
+
+         // 한번 정의 해놓으면 똑같은변수 불가능, 덮어쓰기는 가능
+         let value2 = 0
+         value2 = 10
+         //  let value2 = 1
+
+         //한번 정의 해놓으면 똑같은변수 불가능, 덮어쓰기도 불가능
+         const value3 = 1
+         //  const value3 = 2
+      </script>
+   </body>
+</html>
