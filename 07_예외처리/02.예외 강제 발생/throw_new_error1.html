@@ -8,10 +8,18 @@
    <body>
       <script>
          function test(arr) {
-            console.log(arr[0])
+            if (arr[0] !== undefined) {
+               console.log(arr[0])
+            } else {
+               throw new Error('배열의 0번 인덱스를 지정하지 않았습니다.')
+            }
          }
-
-         test([]) // 빈배열을 매개변수로 전달
+         try {
+            test([]) // 빈배열을 매개변수로 전달
+         } catch (exception) {
+            console.log(exception)
+         }
+         console.log('완료!')
       </script>
    </body>
 </html>
