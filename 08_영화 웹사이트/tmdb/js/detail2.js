@@ -36,9 +36,10 @@ const getDetailTv = async (tvDetailUrl) => {
                      <li>줄거리 : ${data.overview}</li>
                      </ul>
                      </div>
-                  <li>${data.seasons}</li>
-                  <p>${data.overview.length}</p>
-                    
+                     <ul class ="tv-content">
+                     <li>${data.seasons[0]}</li>
+                     <li>${data.seasons.air_date}</li>
+                     </ul>
                </div>`
 
       mainContainer.innerHTML += rowHtml
@@ -48,3 +49,5 @@ const getDetailTv = async (tvDetailUrl) => {
 }
 
 getDetailTv(tvDetailUrl)
+
+//2
