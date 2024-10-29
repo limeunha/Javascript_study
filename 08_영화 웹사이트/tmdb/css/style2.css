@@ -47,20 +47,18 @@ main .container .row .card img {
 
 /* detail.html */
 
-main .container .movie-detail > ul.movie-info,
-p {
-   margin-bottom: 10px !important;
-}
+.row {
+   margin: 0 auto;
 
-main .container ul.movie-info {
    display: flex;
 }
 
-main .container ul.movie-info li {
-   padding-right: 13px;
+.tv_content {
+   padding-top: 30px;
 }
 
 /* footer */
+
 footer {
    height: 100px;
    line-height: 100px;
@@ -70,15 +68,15 @@ footer {
 /* 반응형 UI 문제 해결 */
 @media (min-width: 576px) and (max-width: 767) {
    .col-sm-9 {
-      width: 60%;
+      width: 50%;
    }
 
    .col-sm-3 {
-      width: 40%;
+      width: 50%;
    }
 
    main .container ul .movie-info {
-      display: initial; /*flex 해제*/
+      display: initial; /* flex 해제  */
    }
 
    main .container ul .movie-info li {

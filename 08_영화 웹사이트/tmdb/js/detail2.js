@@ -13,41 +13,54 @@ const tvId = urlParams.get('tv_id')
 const tvDetailUrl = `https://api.themoviedb.org/3/tv/${tvId}?language=ko-KR`
 const mainContainer = document.querySelector('main .container')
 
-//1
+// 1
 const getDetailTv = async (tvDetailUrl) => {
    try {
       const response = await fetch(tvDetailUrl, options)
       const data = await response.json()
 
-      const imgSrc = `https://image.tmdb.org/t/p/w300${data.poster_path}`
+      const imgSrc = `https://image.tmdb.org/t/p/w200${data.poster_path}`
+      const year = data.last_air_date.substring(0, 4)
 
       const rowHtml = `
-         <div class="row">
-                  <div class="col-sm-3" style="text-align:center">
-                     <img src="${imgSrc}" alt="${data.title}" class="poster-detail" style="max-width:100%" />
-                  </div>
-                  <div class="col-sm-9">
-                     <h2>${data.name}</h2>
-                     <ul class="tv-info">
-                     <li>원제 ${data.original_name}, ${data.original_language}</li>
-                     <p>평점 : ${Number(data.vote_average.toFixed(1)) === 0.0 ? '미반영' : data.vote_average.toFixed(1)}</p>
-                     <li>최근방영날짜 : ${data.last_air_date}</li>
-                     <li>처음방영날짜 : ${data.first_air_date}</li>
-                     <li>줄거리 : ${data.overview}</li>
-                     </ul>
-                     </div>
-                     <ul class ="tv-content">
-                     <li>${data.seasons[0]}</li>
-                     <li>${data.seasons.air_date}</li>
-                     </ul>
-               </div>`
+         <div class="row" >
+            <div class="col-sm-5" style="text-align:right" >
+            <img src="${imgSrc}" alt="${data.title}" class="poster-detail" style="max-width:100%","text-align:center" />
+            </div>
+            <div class="col-sm-5" style ="display=flex">
+              <h2>${data.name}(${year})</h2>
+               <ul class="tv-info">
+                  <li>원제: ${data.original_name}, ${data.original_language}</li>
+                  <p>평점: ${Number(data.vote_average.toFixed(1)) === 0.0 ? '미반영' : data.vote_average.toFixed(1)}</p>
+                  <li>최근 방영 날짜: ${data.last_air_date}</li>
+                  <li>처음 방영 날짜: ${data.first_air_date}</li>
+                  </br>
+                  <li>줄거리: ${data.overview || '줄거리가 없습니다.'}</li>
+               </ul>
+            </div>
+         </div>
+         `
 
-      mainContainer.innerHTML += rowHtml
+      mainContainer.innerHTML = rowHtml
+
+      // 2
+      let seasonsResult = '시즌 정보가 없습니다.'
+      if (Array.isArray(data.seasons) && data.seasons.length > 0) {
+         seasonsResult = ''
+         data.seasons.forEach((season) => {
+            seasonsResult += `
+            
+               <p style ="text-align: center"> ${season.name || '정보없음'} (평점 ${season.vote_average || '정보없음'}) 보러가기 - ${season.air_date || '정보없음'} 방영</p>
+            
+               `
+         })
+      }
+
+      // 3
+      mainContainer.innerHTML += `<div class ="tv_content">${seasonsResult}<div>`
    } catch (error) {
-      console.log('에러 발생: ', error)
+      console.error('에러 발생: ', error)
    }
 }
 
 getDetailTv(tvDetailUrl)
-
-//2
