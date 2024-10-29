@@ -44,11 +44,11 @@ const getDetailTv = async (tvDetailUrl) => {
       mainContainer.innerHTML = rowHtml
 
       // 2
-      let seasonsResult = '시즌 정보가 없습니다.'
+      let seasonsHtml = '시즌 정보가 없습니다.'
       if (Array.isArray(data.seasons) && data.seasons.length > 0) {
-         seasonsResult = ''
+         seasonsHtml = ''
          data.seasons.forEach((season) => {
-            seasonsResult += `
+            seasonsHtml += `
             
                <p style ="text-align: center"> ${season.name || '정보없음'} (평점 ${season.vote_average || '정보없음'}) 보러가기 - ${season.air_date || '정보없음'} 방영</p>
             
@@ -57,7 +57,7 @@ const getDetailTv = async (tvDetailUrl) => {
       }
 
       // 3
-      mainContainer.innerHTML += `<div class ="tv_content">${seasonsResult}<div>`
+      mainContainer.innerHTML += `<div class ="tv_content">${seasonsHtml}<div>`
    } catch (error) {
       console.error('에러 발생: ', error)
    }
